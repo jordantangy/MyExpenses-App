@@ -1,8 +1,9 @@
 import logo from "./logo.svg";
 import "./App.css";
-import Expenses from "./components/Expenses";
+import Expenses from "./components/Expenses/Expenses";
+import NewExpense from "./components/NewExpense/NewExpense";
 
-function App() {
+const App = () => {
   const expenses = [
     {
       id: "e1",
@@ -26,10 +27,10 @@ function App() {
   ];
   return (
     <div>
-      <h2>my expenses</h2>
+      <NewExpense />
       <Expenses items={expenses}></Expenses>
     </div>
   );
-}
+};
 
 export default App;
