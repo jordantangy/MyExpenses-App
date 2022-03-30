@@ -1,6 +1,6 @@
 # Link to the App :
 
-https://my-expenses-lkoikczc7-jordantangy.vercel.app/
+https://my-expenses-app.vercel.app/
 
 # Getting Started with Create React App
 
