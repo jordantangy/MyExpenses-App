@@ -8,25 +8,42 @@ import ExpensesChart from "./ExpensesChart";
 
 const Expenses = (props) => {
   const [filteredYear, setFilteredYear] = useState("2020");
+  const [filteredMonth, setFilteredMonth] = useState("none");
 
   const changedYearHandler = (selectedYear) => {
     setFilteredYear(selectedYear);
-    console.log(filteredYear);
   };
 
-  const filteredItems = props.items.filter((expense) => {
+  const changeMonthHandler = (selectedMonth) => {
+    setFilteredMonth(selectedMonth);
+  };
+
+  let filteredItems = props.items.filter((expense) => {
     return expense.date.getFullYear().toString() === filteredYear;
+  });
+
+  let filteredYearAndMonthItems = filteredItems.filter((expense) => {
+    return expense.date.getMonth().toString() == filteredMonth;
   });
 
   return (
     <div>
       <Card className="expenses">
         <ExpensesFilter
-          selected={filteredYear}
+          year_selected={filteredYear}
           onChangeYear={changedYearHandler}
+          onChangeMonth={changeMonthHandler}
         />
-        <ExpensesChart expenses={filteredItems} />
-        <ExpensesList items={filteredItems} />
+        <ExpensesChart
+          expenses={
+            filteredMonth === "none" ? filteredItems : filteredYearAndMonthItems
+          }
+        />
+        <ExpensesList
+          items={
+            filteredMonth === "none" ? filteredItems : filteredYearAndMonthItems
+          }
+        />
       </Card>
     </div>
   );
