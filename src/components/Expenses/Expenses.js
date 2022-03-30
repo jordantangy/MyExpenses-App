@@ -8,7 +8,7 @@ import ExpensesChart from "./ExpensesChart";
 
 const Expenses = (props) => {
   const [filteredYear, setFilteredYear] = useState("2020");
-  const [filteredMonth, setFilteredMonth] = useState("none");
+  const [filteredMonth, setFilteredMonth] = useState("None");
 
   const changedYearHandler = (selectedYear) => {
     setFilteredYear(selectedYear);

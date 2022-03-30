@@ -25,7 +25,7 @@ const ExpensesFilter = (props) => {
       <div className="expenses-filter__control">
         <label>Filter by month</label>
         <select onChange={monthChangeHandler}>
-          <option value="">none</option>
+          <option value="none">None</option>
           <option value="0">January</option>
           <option value="1">February</option>
           <option value="2">March</option>
