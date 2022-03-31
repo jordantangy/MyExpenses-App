@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import "./ExpenseForm.css";
+import "../Expenses/ExpensesFilter.css";
 
 const ExpenseForm = (props) => {
   const [enteredTitle, setEnteredTitle] = useState("");
   const [enteredAmount, setEnteredAmount] = useState("");
   const [enteredDate, setEnteredDate] = useState("");
+  const [selectedCurrency, setSelectedCurrency] = useState("$");
 
   //   const [userInput, setUserInput] = useState({
   //     enteredTitle: "",
@@ -49,6 +51,10 @@ const ExpenseForm = (props) => {
     // });
   };
 
+  const currencyChangeHandler = (event) => {
+    setSelectedCurrency(event.target.value);
+  };
+
   const submitHandler = (event) => {
     event.preventDefault();
 
@@ -56,6 +62,7 @@ const ExpenseForm = (props) => {
       title: enteredTitle,
       amount: +enteredAmount,
       date: new Date(enteredDate),
+      currency: selectedCurrency,
     };
     props.onSaveExpenseData(expenseData);
     props.onCancel();
@@ -84,6 +91,15 @@ const ExpenseForm = (props) => {
             value={enteredAmount}
             onChange={amountChangeHandler}
           />
+        </div>
+        <div className="new-expense__control">
+          <label>Currency</label>
+          <select onChange={currencyChangeHandler}>
+            <option value="$">USD $</option>
+            <option value="₪">ILS ₪</option>
+            <option value="CAD">CAD $</option>
+            <option value="€">EUR €</option>
+          </select>
         </div>
         <div className="new-expense__control">
           <label>Date</label>
