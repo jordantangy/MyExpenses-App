@@ -19,8 +19,28 @@
   border: 1px solid #ccc;
   width: 20rem;
   max-width: 100%;
+  
+}
+
+.new-expense__control.invalid input {
+  font: inherit;
+  padding: 0.5rem;
+  border-radius: 6px;
+  border-color: rgb(23, 22, 22);
+  width: 20rem;
+  max-width: 100%;
+  background : rgb(235, 160, 160)
 }
 
 .new-expense__actions {
   text-align: right;
+}
+
+.new-expense input{
+  background : rgb(253, 253, 253)
+}
+
+
+.new-expense.invalid input{
+  background : rgb(206, 137, 137)
 }

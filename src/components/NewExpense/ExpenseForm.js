@@ -7,6 +7,8 @@ const ExpenseForm = (props) => {
   const [enteredAmount, setEnteredAmount] = useState("");
   const [enteredDate, setEnteredDate] = useState("");
   const [selectedCurrency, setSelectedCurrency] = useState("$");
+  const [isAmountValid, setIsAmountValid] = useState(true);
+  const [isDateValid, setIsDateValid] = useState(true);
 
   //   const [userInput, setUserInput] = useState({
   //     enteredTitle: "",
@@ -64,6 +66,20 @@ const ExpenseForm = (props) => {
       date: new Date(enteredDate),
       currency: selectedCurrency,
     };
+
+    if (
+      enteredAmount.trim().length === 0 ||
+      enteredDate.toString().trim().length === 0
+    ) {
+      if (enteredAmount.trim().length === 0) {
+        setIsAmountValid(false);
+      }
+      if (enteredDate.toString().trim().length === 0) {
+        setIsDateValid(false);
+      }
+      return;
+    }
+
     props.onSaveExpenseData(expenseData);
     props.onCancel();
     setEnteredTitle("");
@@ -82,7 +98,9 @@ const ExpenseForm = (props) => {
             onChange={titleChangeHandler}
           />
         </div>
-        <div className="new-expense__control">
+        <div
+          className={`new-expense__control ${isAmountValid ? "" : "invalid"}`}
+        >
           <label>Amount</label>
           <input
             type="number"
@@ -101,7 +119,7 @@ const ExpenseForm = (props) => {
             <option value="€">EUR €</option>
           </select>
         </div>
-        <div className="new-expense__control">
+        <div className={`new-expense__control ${isDateValid ? "" : "invalid"}`}>
           <label>Date</label>
           <input
             type="date"
