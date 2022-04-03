@@ -30,6 +30,9 @@ const ExpenseForm = (props) => {
 
   const amountChangeHandler = (event) => {
     setEnteredAmount(event.target.value);
+    if (event.target.value.trim().length > 0) {
+      setIsAmountValid(true);
+    }
 
     // setUserInput({
     //     ...userInput,
@@ -42,7 +45,9 @@ const ExpenseForm = (props) => {
   };
   const dateChangeHandler = (event) => {
     setEnteredDate(event.target.value);
-
+    if (event.target.value.trim().length > 0) {
+      setIsDateValid(true);
+    }
     // setUserInput({
     //     ...userInput,
     //     enteredDate: event.target.value,
